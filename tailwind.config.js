@@ -5,10 +5,14 @@ module.exports = {
     extend: {
       colors: {
         "button-blue": "#2F80ED",
+        "footer-text": "#4F4F4F",
+        "copyright-bg": "#EBEBEB",
+        "input-bg": "#F2F2F2",
+        "light-yellow": "#FCEFCA",
       },
     },
     fontFamily: {
-      Roboto: ["Roboto, sans-serif"],
+      sans: ["Work Sans", "sans-serif"],
     },
     container: {
       padding: "1rem",
