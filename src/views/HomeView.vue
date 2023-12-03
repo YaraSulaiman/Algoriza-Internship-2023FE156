@@ -2,7 +2,7 @@
   <main class="bg-white">
     <SiteNavigation />
     <section class="bg-white font-sans h-full pt-72 w-10/12 m-auto">
-      <div class="relative">
+      <div class="relative mb-24">
         <img
           class="m-auto -mt-52 rounded-xl w-full"
           src="/images/header-min.jpg"
@@ -20,99 +20,11 @@
           </div>
         </div>
 
-        <div class="absolute -bottom-6 left-0 flex justify-center w-full">
-          <div
-            class="p-2 flex gap-3 w-fit bg-white shadow-lg rounded-md text-xs"
-          >
-            <div class="relative">
-              <div class="bg-input-bg rounded-sm px-2 flex items-center">
-                <img src="/images/location 1-min.png" class="w-5 h-5" alt="" />
-                <input
-                  type="text"
-                  v-model="searchQuery"
-                  @input="getSearchResults"
-                  placeholder="Where are you going?"
-                  class="inline-flex py-2 bg-input-bg text-center focus:outline-none"
-                />
-                <img
-                  src="/images/chevron-down-min.png"
-                  class="w-3 h-3 mr-1"
-                  alt=""
-                />
-              </div>
-
-              <ul
-                class="absolute bg-white rounded-md text-black shadow-md py-2 px-1 top-[66px] w-full"
-                v-if="
-                  searchQuery &&
-                  rapidApiSearchResults &&
-                  rapidApiSearchResults.data &&
-                  rapidApiSearchResults.data.length > 0
-                "
-              >
-                <li
-                  v-for="searchResult in rapidApiSearchResults.data"
-                  :key="searchResult.id"
-                  class="py-2 cursor-pointer"
-                >
-                  {{ searchResult.name }}
-                </li>
-              </ul>
-
-              <ul
-                v-if="
-                  searchQuery &&
-                  rapidApiSearchResults.data &&
-                  rapidApiSearchResults.data.length === 0
-                "
-                class="absolute bg-white rounded-md text-black shadow-md py-2 px-1 top-[66px] w-full"
-              >
-                <li class="py-2">No results found.</li>
-              </ul>
-            </div>
-
-            <input
-              type="date"
-              placeholder="Check in date"
-              class="py-2 px-3 bg-input-bg"
-            />
-
-            <input
-              type="date"
-              placeholder="Check out date"
-              class="py-2 px-3 bg-input-bg"
-            />
-
-            <div class="">
-              <img src="/images/" alt="" />
-              <input
-                type="number"
-                placeholder="Guests"
-                class="py-2 px-3 bg-input-bg"
-              />
-            </div>
-
-            <input
-              type="number"
-              placeholder="Rooms"
-              class="py-2 px-3 bg-input-bg"
-            />
-
-            <button class="py-2 px-3 bg-button-blue text-white rounded-md">
-              Search
-            </button>
-          </div>
-        </div>
+        <SearchBar />
       </div>
-      <div
-        class="flex items-center pl-6 mt-24 rounded-md bg-light-yellow w-full h-16 text-base mb-24"
-      >
-        <img class="pr-4" src="/images/danger-min.png" alt="" />
-        Check the latest COVID-19 restrictions before you travel.
-        <span class="text-button-blue"> &zwnj; Learn more</span>
-      </div>
+      <WarningCard />
 
-      <div class="mb-16 w-2/3">
+      <div class="mt-24 mb-16 w-2/3">
         <h2 class="text-3xl font-semibold">Enjoy your dream vacation</h2>
         <p class="text-base w-10/12">
           Plan and book our perfect trip with expert advice, travel tips,
@@ -331,50 +243,11 @@
 </template>
 
 <script setup>
-  import SiteNavigation from "../components/SiteNavigation.vue";
-  import SiteFooter from "../components/SiteFooter.vue";
+  import SiteNavigation from '../components/SiteNavigation.vue';
+  import SiteFooter from '../components/SiteFooter.vue';
+  import Results from './Results.vue';
+  import SearchBar from '../components/SearchBar.vue';
+  import WarningCard from '../components/WarningCard.vue';
 
-  import { RouterLink } from "vue-router";
-
-  import { ref } from "vue";
-  import axios from "axios";
-
-  const rapidAPIKey = "bfa637e03bmsh656be124dd9ed0dp10e6fdjsna98b71379263";
-
-  const searchQuery = ref("");
-  const queryTimeout = ref(null);
-  const rapidApiSearchResults = ref(null);
-
-  const getRapidApiSearchResults = async () => {
-    try {
-      const options = {
-        method: "GET",
-        url: "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchDestination",
-        params: { query: searchQuery.value },
-        headers: {
-          "X-RapidAPI-Key": rapidAPIKey,
-          "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
-        },
-      };
-
-      const response = await axios.request(options);
-      rapidApiSearchResults.value = response.data;
-
-      console.log(rapidApiSearchResults.value);
-    } catch (error) {
-      console.error("Error fetching RapidAPI results:", error);
-    }
-  };
-
-  const getSearchResults = () => {
-    clearInterval(queryTimeout.value);
-    queryTimeout.value = setTimeout(() => {
-      if (searchQuery.value !== "") {
-        // Call the new function for RapidAPI
-        getRapidApiSearchResults();
-        return;
-      }
-      rapidApiSearchResults.value = null;
-    }, 300);
-  };
+  import { RouterLink } from 'vue-router';
 </script>

@@ -4,11 +4,13 @@
       <div
         v-show="modalActive"
         class="absolute w-full bg-black bg-opacity-30 h-screen top-0 left-0 flex justify-center px-8"
+        @click.self="$emit('close-modal')"
       >
         <transition name="modal-inner">
           <div
             v-if="modalActive"
             class="p-5 bg-white self-start mt-32 w-1/4 rounded-md"
+            @click.stop
           >
             <slot />
             <button

@@ -1,7 +1,5 @@
-<!-- Dropdown.vue -->
 <template>
   <div v-if="!authStore.isAuthenticated">
-    <!-- Render login button -->
     <RouterLink :to="{ name: 'Login' }">
       <button
         class="py-2 px-4 bg-button-blue rounded-md text-white cursor-pointer"
@@ -38,7 +36,6 @@
         </div>
       </div>
     </WelcomeModal>
-    <!-- Render profile icon -->
     <div class="flex items-center gap-5">
       <div>
         <img src="/images/notifications-min.png" alt="" />
@@ -50,13 +47,10 @@
           class="cursor-pointer"
         />
 
-        <!-- Dropdown Menu -->
         <div
           v-if="isDropdownOpen"
           class="absolute top-0 right-0 mt-8 bg-white shadow-lg rounded-md"
         >
-          <!-- Dropdown content goes here -->
-          <!-- For example: -->
           <ul
             class="absolute flex flex-col gap-2 right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm"
           >
@@ -80,7 +74,6 @@
               <img class="w-4 h-4" src="/images/sign-out-min.png" alt="" />
               <button @click="logout">Sign out</button>
             </li>
-            <!-- Add more options as needed -->
           </ul>
         </div>
       </div>
@@ -105,12 +98,9 @@
 
   const logout = () => {
     authStore.logout();
-    // Redirect to the login page or perform other actions
-    // Example: router.push('/login');
   };
   const modalActive = ref(null);
   const toggleModal = () => {
     modalActive.value = !modalActive.value;
   };
-  // Vue automatically handles exports, so you don't need the explicit export statement
 </script>

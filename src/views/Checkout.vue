@@ -2,14 +2,9 @@
   <div class="bg-checkout-bg">
     <SiteNavigation />
     <section class="bg-checkout-bg font-sans h-full pt-32 w-10/12 m-auto">
-      <h2 class="text-3xl font-semibold">Secure your reservation</h2>
-      <div
-        class="flex items-center pl-6 mt-6 rounded-md bg-light-yellow w-full h-16 text-base"
-      >
-        <img class="pr-4" src="/images/danger-min.png" alt="" />
-        Check the latest COVID-19 restrictions before you travel.
-        <span class="text-button-blue"> &zwnj; Learn more</span>
-      </div>
+      <h2 class="text-3xl font-semibold mb-6">Secure your reservation</h2>
+      <WarningCard />
+
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div class="col-span-2">
           <!-- //////////////////////////////////////////////////////////// -->
@@ -41,7 +36,7 @@
                       name="first-name"
                       id="first-name"
                       autocomplete="given-name"
-                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-button-blue outline-none sm:text-sm sm:leading-6 mt-2"
+                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6 mt-2"
                     />
                   </div>
 
@@ -59,7 +54,7 @@
                       name="last-name"
                       id="last-name"
                       autocomplete="family-name"
-                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-button-blue outline-none sm:text-sm sm:leading-6 mt-2"
+                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6 mt-2"
                     />
                   </div>
 
@@ -74,7 +69,6 @@
                     </label>
 
                     <div class="flex items-center space-x-2 mt-2">
-                      <!-- Country Code Dropdown -->
                       <select
                         id="countryCode"
                         name="countryCode"
@@ -84,16 +78,14 @@
                       >
                         <option value="+1">+1 (USA)</option>
                         <option value="+44">+44 (UK)</option>
-                        <!-- Add more country code options as needed -->
                       </select>
 
-                      <!-- Phone Number Input -->
                       <input
                         type="tel"
                         id="phoneNumber"
                         name="phoneNumber"
                         placeholder="Enter phone number"
-                        class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-button-blue outline-none sm:text-sm sm:leading-6"
+                        class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6"
                       />
                     </div>
 
@@ -117,7 +109,6 @@
 
           <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-          <!-- Payment options -->
           <div class="bg-white mt-6 rounded-md">
             <div class="flex bg-button-blue p-3 rounded-tl-md rounded-tr-md">
               <img src="/images/card-tick-min.png" alt="" />
@@ -136,7 +127,7 @@
                       type="text"
                       name="card-name"
                       id="card-name"
-                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-button-blue outline-none sm:text-sm sm:leading-6 mt-2"
+                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6 mt-2"
                     />
                     <img
                       class="bg-white w-5 h-5 mt-1"
@@ -160,7 +151,7 @@
                       id="cardNumber"
                       name="cardNumber"
                       placeholder="0000 0000 0000 0000"
-                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-button-blue outline-none sm:text-sm sm:leading-6 mt-2"
+                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6 mt-2"
                       maxlength="19"
                     />
                     <img
@@ -185,7 +176,7 @@
                       id="expiryDate"
                       name="expiryDate"
                       placeholder="MM/YY"
-                      class="block w-10/12 rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-button-blue outline-none sm:text-sm sm:leading-6 mt-2"
+                      class="block w-10/12 rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6 mt-2"
                       maxlength="5"
                     />
                     <img
@@ -211,7 +202,7 @@
                       id="cvv"
                       name="cvv"
                       placeholder="123"
-                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-button-blue outline-none sm:text-sm sm:leading-6 mt-2"
+                      class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6 mt-2"
                       maxlength="3"
                     />
                   </div>
@@ -229,7 +220,7 @@
                         id="billingZip"
                         name="billingZip"
                         placeholder="123456"
-                        class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-button-blue outline-none sm:text-sm sm:leading-6 mt-2"
+                        class="block w-full rounded-sm border-0 pl-2 py-1.5 text-checkout-text shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6 mt-2"
                         maxlength="6"
                       />
                       <img
@@ -344,6 +335,7 @@
 
 <script>
   import SiteNavigation from '../components/SiteNavigation.vue';
+  import WarningCard from '../components/WarningCard.vue';
 
   export default {
     data() {
@@ -356,14 +348,15 @@
     },
     components: {
       SiteNavigation,
+      WarningCard,
     },
     methods: {
       formatCardNumber() {
-        this.cardNumber = this.cardNumber.replace(/\D/g, ''); // Remove non-numeric characters
-        this.cardNumber = this.cardNumber.replace(/(.{4})/g, '$1 ').trim(); // Add space after every 4 digits
+        this.cardNumber = this.cardNumber.replace(/\D/g, '');
+        this.cardNumber = this.cardNumber.replace(/(.{4})/g, '$1 ').trim();
       },
       formatExpiryDate() {
-        this.expiryDate = this.expiryDate.replace(/\D/g, ''); // Remove non-numeric characters
+        this.expiryDate = this.expiryDate.replace(/\D/g, '');
         if (this.expiryDate.length > 2) {
           this.expiryDate = `${this.expiryDate.slice(
             0,
@@ -372,7 +365,6 @@
         }
       },
       validatePayment() {
-        // Your validation logic here
         console.log('Card Number:', this.cardNumber);
         console.log('Expiry Date:', this.expiryDate);
         console.log('CVV:', this.cvv);

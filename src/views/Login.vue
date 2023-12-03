@@ -1,30 +1,4 @@
-<!-- Login.vue -->
-
-// //////////////////////////////////////////////////////
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <template>
-  <!--
-    This example requires updating your template:
-
-    ```
-    <html class="h-full bg-white">
-    <body class="h-full">
-    ```
-  -->
-  <!-- <form @submit.prevent="submitForm"> -->
   <main class="bg-white h-screen">
     <div
       class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8"
@@ -48,13 +22,12 @@
             <div class="mt-2">
               <input
                 v-model="email"
-                placeholder="Email"
                 id="email"
                 name="email"
                 type="email"
                 autocomplete="email"
                 required=""
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6 pl-2 bg-checkout-bg"
               />
             </div>
           </div>
@@ -66,24 +39,16 @@
                 class="block text-sm font-medium leading-6 text-gray-900"
                 >Password</label
               >
-              <div class="text-sm">
-                <a
-                  href="#"
-                  class="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >Forgot password?</a
-                >
-              </div>
             </div>
             <div class="mt-2">
               <input
                 v-model="password"
                 type="password"
-                placeholder="Password"
                 id="password"
                 name="password"
                 autocomplete="current-password"
                 required=""
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset outline-none sm:text-sm sm:leading-6 pl-2 bg-checkout-bg"
               />
             </div>
           </div>
@@ -91,7 +56,7 @@
           <div>
             <button
               type="submit"
-              class="py-2 px-4 bg-button-blue rounded-md text-white cursor-pointer"
+              class="py-2 px-4 bg-button-blue rounded-md text-white cursor-pointer w-full"
               @click="login"
             >
               Sign in
@@ -109,10 +74,8 @@
       </div>
     </div>
   </main>
-  <!-- </form> -->
 </template>
 
-// //////////////////////////////////////////////////////
 <script>
   import { ref } from 'vue';
   import { useAuthStore } from '../stores/AuthStore';
@@ -127,35 +90,23 @@
       const password = ref('');
 
       const login = () => {
-        // Perform email and password validation
         if (isValidEmail(email.value) && isValidPassword(password.value)) {
           authStore.login();
-          // Redirect to home page
-          router.push({ name: 'home' }); // Use the route name specified in the router
+          router.push({ name: 'home' });
         } else {
-          // Show validation error
           console.error('Invalid email or password format');
         }
       };
 
       const isValidEmail = (value) => {
-        // Add email validation logic
         return /\S+@\S+\.\S+/.test(value);
       };
 
       const isValidPassword = (value) => {
-        // Add password validation logic
-        // Example: Minimum length, uppercase, lowercase, number, etc.
         return value.length >= 8;
       };
 
       return { email, password, login };
     },
-    // methods: {
-    //   submitForm(event) {
-    //     event.preventDefault();
-    //     // Other form submission logic
-    //   },
-    // },
   };
 </script>
